@@ -31,4 +31,5 @@ config/
 external-chaincode/
 
 # override the ignore of all config/ folders
+!asset-transfer-basic/chaincode-java/config
 !full-stack-asset-transfer-guide/infrastructure/sample-network/config
