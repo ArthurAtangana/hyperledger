@@ -17,7 +17,7 @@ public final class Ballot {
     private final String ballotMarks;
 
     @Property()
-    private final int candidateOrder;
+    private final String candidateOrder;
 
     @Property()
     private final String ring;
@@ -30,7 +30,7 @@ public final class Ballot {
         return ballotMarks;
     }
 
-    public int getCandidateOrder() {
+    public String getCandidateOrder() {
         return candidateOrder;
     }
 
@@ -40,7 +40,7 @@ public final class Ballot {
 
     public Ballot(@JsonProperty("ballotId") final String ballotId,
             @JsonProperty("ballotMarks") final String ballotMarks,
-            @JsonProperty("candidateOrder") final int candidateOrder,
+            @JsonProperty("candidateOrder") final String candidateOrder,
             @JsonProperty("ring") final String ring) {
         this.ballotId = ballotId;
         this.ballotMarks = ballotMarks;

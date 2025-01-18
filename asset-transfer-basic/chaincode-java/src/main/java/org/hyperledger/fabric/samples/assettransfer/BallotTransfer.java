@@ -37,12 +37,12 @@ public final class BallotTransfer implements ContractInterface {
     @Transaction(intent = Transaction.TYPE.SUBMIT)
     public void InitLedger(final Context ctx) {
         String marks = "[true, false, false]";
-        putBallot(ctx, new Ballot("ballot1", marks, 1, "123afdsasdf5"));
-        putBallot(ctx, new Ballot("ballot2", marks, 2, "asdfjowqie5"));
-        putBallot(ctx, new Ballot("ballot3", marks, 3, "qwiufhaksjdads10"));
-        putBallot(ctx, new Ballot("ballot4", marks, 4, "r38ryqfu39210"));
-        putBallot(ctx, new Ballot("ballot5", marks, 5, "erg798ih15"));
-        putBallot(ctx, new Ballot("ballot6", marks, 6, "q9r8hreog894q15"));
+        putBallot(ctx, new Ballot("ballot1", marks, "1", "123afdsasdf5"));
+        putBallot(ctx, new Ballot("ballot2", marks, "2", "asdfjowqie5"));
+        putBallot(ctx, new Ballot("ballot3", marks, "3", "qwiufhaksjdads10"));
+        putBallot(ctx, new Ballot("ballot4", marks, "4", "r38ryqfu39210"));
+        putBallot(ctx, new Ballot("ballot5", marks, "5", "erg798ih15"));
+        putBallot(ctx, new Ballot("ballot6", marks, "6", "q9r8hreog894q15"));
 
     }
 
@@ -57,7 +57,7 @@ public final class BallotTransfer implements ContractInterface {
      */
     @Transaction(intent = Transaction.TYPE.SUBMIT)
     public Ballot CreateBallot(final Context ctx, final String ballotId, final String ballotMarks,
-            final int candidateOrder, final String ring) {
+            final String candidateOrder, final String ring) {
 
         if (BallotExists(ctx, ballotId)) {
             String errorMessage = String.format("Ballot %s already exists", ballotId);
@@ -140,12 +140,14 @@ public final class BallotTransfer implements ContractInterface {
 
         List<Ballot> queryResults = new ArrayList<>();
 
-        // To retrieve all ballots from the ledger use getStateByRange with empty startKey
+        // To retrieve all ballots from the ledger use getStateByRange with empty
+        // startKey
         // & endKey.
         // Giving empty startKey & endKey is interpreted as all the keys from beginning
         // to end.
         // As another example, if you use startKey = 'ballot0', endKey = 'ballot9' ,
-        // then getStateByRange will retrieve ballot with keys between ballot0 (inclusive)
+        // then getStateByRange will retrieve ballot with keys between ballot0
+        // (inclusive)
         // and ballot9 (exclusive) in lexical order.
         QueryResultsIterator<KeyValue> results = stub.getStateByRange("", "");
 
