@@ -1,35 +1,40 @@
-# Emacs backup files
-*~
-*#
-.#*
-# Vim file artifacts
-.*.sw*
-.DS_Store
-.project
-# omit Go vendor directories
-vendor/
-.vscode
-.gradle
-.idea
-# Dependency directories
-node_modules/
-package-lock.json
-# Ignore Gradle build output directory
-build
-# Ignore Maven build output directory
-target
-**/bin/
+###############################################################################
+# .gitignore
+###############################################################################
+# Description
+# -----------
+# Ignore file or directory by pattern.
+#
+# Usage
+# -----
+# Ignore file or directory by pattern:
+# <pattern>
+#
+# Pattern Operators
+# -----------------
+#      /     - directory designator and separator
+#      *     - wildcard match any number of char except '/'
+#      ?     - match any single char except '/'
+#      !     - negate
+#  [<range>] - range of chars to match
+#     **/    - search all dirs
+#    a/**    - match everything inside a
+#   a/**/b   - match b as any generation child subdir of a
+#
+###############################################################################
+# Author: M. De Santis
+# Last Edited: 2023/05/30
+###############################################################################
 
-# Eclipse
-.classpath
-.settings
-
-# installed Fabric binaries etc.
-/bin/
+# objects
+*.o
+# vim swapfiles
+*.swp
+# scratch
+*.scratch
+/**scratch
+# hyperledger
+asset-transfer-basic/chaincode-java/build/
+bin/
 builders/
 config/
-external-chaincode/
-
-# override the ignore of all config/ folders
-!asset-transfer-basic/chaincode-java/config
-!full-stack-asset-transfer-guide/infrastructure/sample-network/config
