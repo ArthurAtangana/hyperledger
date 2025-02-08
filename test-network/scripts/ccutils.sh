@@ -302,7 +302,7 @@ chaincodeInvoke() {
     sleep $DELAY
     infoln "Attempting to Invoke on peer0.org${ORG}, Retry after $DELAY seconds."
     set -x
-    peer chaincode invoke -o 10.0.0.200:7050 -C $CHANNEL_NAME -n ${CC_NAME} -c ${CC_INVOKE_CONSTRUCTOR} --tls --cafile $ORDERER_CA  --peerAddresses 10.0.0.201:7051 --tlsRootCertFiles $PEER0_ORG1_CA --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA  >&log.txt # CVS: ORDERER:7050 # CVS: PEER1:7051 
+    peer chaincode invoke -o 10.0.0.200:7050 -C $CHANNEL_NAME -n ${CC_NAME} -c ${CC_INVOKE_CONSTRUCTOR} --tls --cafile $ORDERER_CA  --peerAddresses 10.0.0.201:7051 --tlsRootCertFiles $PEER0_ORG1_CA --peerAddresses 10.0.0.202:9051 --tlsRootCertFiles $PEER0_ORG2_CA  >&log.txt # CVS: ORDERER:7050 # CVS: PEER1:7051  # CVS: PEER2:9051
     res=$?
     { set +x; } 2>/dev/null
     let rc=$res
