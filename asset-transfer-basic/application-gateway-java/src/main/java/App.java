@@ -49,7 +49,7 @@ public final class App {
 	private static final Path TLS_CERT_PATH = CRYPTO_PATH.resolve(Paths.get("peers/peer0.org1.example.com/tls/ca.crt"));
 
 	// Gateway peer end point.
-	private static final String PEER_ENDPOINT = "10.0.0.201:7051"; // #CVS: PEER1:7051
+	private static final String PEER_ENDPOINT = "192.168.8.200:7051"; // #CVS: PEER1:7051
 	private static final String OVERRIDE_AUTH = "peer0.org1.example.com";
 
 	private final Contract contract;

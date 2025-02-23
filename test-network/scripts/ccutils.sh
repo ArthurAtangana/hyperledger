@@ -34,7 +34,7 @@ function approveForMyOrg() {
   ORG=$1
   setGlobals $ORG
   set -x
-  peer lifecycle chaincode approveformyorg -o 10.0.0.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt # CVS: ORDERER:7050
+  peer lifecycle chaincode approveformyorg -o 192.168.8.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt # CVS: ORDERER:7050
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -83,7 +83,7 @@ function commitChaincodeDefinition() {
   # peer (if join was successful), let's supply it directly as we know
   # it using the "-o" option
   set -x
-  peer lifecycle chaincode commit -o 10.0.0.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} "${PEER_CONN_PARMS[@]}" --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt # CVS: ORDERER:7050
+  peer lifecycle chaincode commit -o 192.168.8.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" --channelID $CHANNEL_NAME --name ${CC_NAME} "${PEER_CONN_PARMS[@]}" --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt # CVS: ORDERER:7050
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -137,7 +137,7 @@ function chaincodeInvokeInit() {
     # it using the "-o" option
     set -x
     infoln "invoke fcn call:${fcn_call}"
-    peer chaincode invoke -o 10.0.0.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" -C $CHANNEL_NAME -n ${CC_NAME} "${PEER_CONN_PARMS[@]}" --isInit -c ${fcn_call} >&log.txt # CVS: ORDERER:7050
+    peer chaincode invoke -o 192.168.8.200:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "$ORDERER_CA" -C $CHANNEL_NAME -n ${CC_NAME} "${PEER_CONN_PARMS[@]}" --isInit -c ${fcn_call} >&log.txt # CVS: ORDERER:7050
     res=$?
     { set +x; } 2>/dev/null
     let rc=$res
@@ -302,7 +302,7 @@ chaincodeInvoke() {
     sleep $DELAY
     infoln "Attempting to Invoke on peer0.org${ORG}, Retry after $DELAY seconds."
     set -x
-    peer chaincode invoke -o 10.0.0.200:7050 -C $CHANNEL_NAME -n ${CC_NAME} -c ${CC_INVOKE_CONSTRUCTOR} --tls --cafile $ORDERER_CA  --peerAddresses 10.0.0.201:7051 --tlsRootCertFiles $PEER0_ORG1_CA --peerAddresses 10.0.0.202:9051 --tlsRootCertFiles $PEER0_ORG2_CA  >&log.txt # CVS: ORDERER:7050 # CVS: PEER1:7051  # CVS: PEER2:9051
+    peer chaincode invoke -o 192.168.8.200:7050 -C $CHANNEL_NAME -n ${CC_NAME} -c ${CC_INVOKE_CONSTRUCTOR} --tls --cafile $ORDERER_CA  --peerAddresses 192.168.8.200:7051 --tlsRootCertFiles $PEER0_ORG1_CA --peerAddresses 192.168.8.200:9051 --tlsRootCertFiles $PEER0_ORG2_CA  >&log.txt # CVS: ORDERER:7050 # CVS: PEER1:7051  # CVS: PEER2:9051
     res=$?
     { set +x; } 2>/dev/null
     let rc=$res

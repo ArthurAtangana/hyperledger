@@ -26,7 +26,7 @@ fetchChannelConfig() {
 
   infoln "Fetching the most recent configuration block for the channel"
   set -x
-  peer channel fetch config ${TEST_NETWORK_HOME}/channel-artifacts/config_block.pb -o 10.0.0.200:7050 --ordererTLSHostnameOverride orderer.example.com -c $CHANNEL --tls --cafile "$ORDERER_CA" #CVS: ORDERER:7050
+  peer channel fetch config ${TEST_NETWORK_HOME}/channel-artifacts/config_block.pb -o 192.168.8.200:7050 --ordererTLSHostnameOverride orderer.example.com -c $CHANNEL --tls --cafile "$ORDERER_CA" #CVS: ORDERER:7050
   { set +x; } 2>/dev/null
 
   infoln "Decoding config block to JSON and isolating config to ${OUTPUT}"
